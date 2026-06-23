@@ -2,7 +2,7 @@
 
 An [Agent Skill](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) that teaches AI coding tools to write correct [Strudel](https://strudel.cc/) live-coding music code.
 
-Works with any tool that supports the Agent Skills format — **Claude Code**, claude.ai, the Claude API, etc.
+Works with any tool that supports the Agent Skills (`SKILL.md`) format — **Claude Code**, Cursor, Windsurf, Codex, OpenCode, claude.ai, the Claude API, and more.
 
 ## What it does
 
@@ -20,26 +20,58 @@ All content is verified against the official docs at https://strudel.cc/.
 
 ## Install
 
-### Claude Code
+This repo follows the standard `skills/<name>/` layout, so both npm-based skill installers work out of the box.
 
-Copy the `strudel/` directory into your skills folder:
+### Option A — OpenSkills
+
+[`openskills`](https://github.com/numman-ali/openskills) — universal SKILL.md loader (writes an `AGENTS.md` any agent can read).
 
 ```bash
-# Project-level (this repo only)
-cp -R strudel /path/to/your/project/.claude/skills/
+# From this GitHub repo
+npx openskills install auto-duan/strudel-skill
+npx openskills sync
 
-# Or user-level (all projects)
-cp -R strudel ~/.claude/skills/
+# Global install (~/.claude/skills)
+npx openskills install auto-duan/strudel-skill --global
+
+# From a local clone
+npx openskills install ./strudel-skill/skills/strudel
 ```
 
-Claude Code auto-discovers it. The skill triggers when you mention Strudel, mini-notation, or live-coding music.
+### Option B — Vercel skills
+
+[`skills`](https://github.com/vercel-labs/skills) — the CLI for the open agent-skills ecosystem ([skills.sh](https://skills.sh)).
+
+```bash
+# List what's in the repo
+npx skills add auto-duan/strudel-skill --list
+
+# Install (interactive agent/scope picker)
+npx skills add auto-duan/strudel-skill
+
+# Target specific agents, global, non-interactive
+npx skills add auto-duan/strudel-skill -a claude-code -a cursor -g -y
+
+# Direct path to the skill
+npx skills add https://github.com/auto-duan/strudel-skill/tree/main/skills/strudel
+```
+
+### Option C — Manual (no installer)
+
+```bash
+# Project-level
+cp -R skills/strudel /path/to/your/project/.claude/skills/
+
+# Or user-level (all projects)
+cp -R skills/strudel ~/.claude/skills/
+```
 
 ### claude.ai
 
-Zip the `strudel/` directory and upload via Settings > Features > Skills.
+Zip the skill directory and upload via Settings > Features > Skills.
 
 ```bash
-cd strudel && zip -r ../strudel-skill.zip . && cd ..
+cd skills/strudel && zip -r ../../strudel-skill.zip . && cd ../..
 ```
 
 ## Structure
@@ -47,20 +79,23 @@ cd strudel && zip -r ../strudel-skill.zip . && cd ..
 ```
 strudel-skill/
 ├── README.md
-└── strudel/
-    ├── SKILL.md          # entry point (name + description + workflow)
-    └── references/
-        ├── cheatsheet.md
-        ├── gotchas.md
-        ├── index.json
-        ├── mini-notation/
-        ├── functions/    # 111 per-function docs
-        └── patterns/     # 5 example compositions
+└── skills/
+    └── strudel/
+        ├── SKILL.md          # entry point (name + description + workflow)
+        └── references/
+            ├── cheatsheet.md
+            ├── gotchas.md
+            ├── index.json
+            ├── mini-notation/
+            ├── functions/    # 111 per-function docs
+            └── patterns/     # 5 example compositions
 ```
+
+The `skills/<name>/` layout is the convention used by the Vercel `skills` CLI, and OpenSkills discovers `SKILL.md` recursively — so a single repo serves both ecosystems plus manual install.
 
 ## Updating the references
 
-The reference docs come from [strudel-docs-for-ai](https://github.com/auto-duan/strudel-docs-for-ai). To refresh, re-copy that repo's content into `strudel/references/`.
+The reference docs come from [strudel-docs-for-ai](https://github.com/auto-duan/strudel-docs-for-ai). To refresh, re-copy that repo's content into `skills/strudel/references/`.
 
 ## Source of truth
 
