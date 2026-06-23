@@ -1,0 +1,2474 @@
+{
+  "project": "strudel-docs-for-ai",
+  "description": "AI-optimized reference for writing Strudel (strudel.cc) code. One file per function; examples verified against official sources.",
+  "source_of_truth": "https://strudel.cc/ (docs), https://codeberg.org/uzu/strudel (repo)",
+  "function_count": 111,
+  "categories": {
+    "sample": 5,
+    "signal": 10,
+    "sound": 32,
+    "structure": 5,
+    "tonal": 11,
+    "transform": 48
+  },
+  "status_summary": {
+    "verified": 110,
+    "needs-verification": 1
+  },
+  "aliases": {
+    "sound": "s",
+    "att": "attack",
+    "bandf": "bpf",
+    "bp": "bpf",
+    "bandq": "bpq",
+    "dec": "decay",
+    "delayfb": "delayfeedback",
+    "dfb": "delayfeedback",
+    "delayt": "delaytime",
+    "dt": "delaytime",
+    "dist": "distort",
+    "hp": "hpf",
+    "hcutoff": "hpf",
+    "hresonance": "hpq",
+    "loopb": "loopBegin",
+    "loope": "loopEnd",
+    "cutoff": "lpf",
+    "ctf": "lpf",
+    "lp": "lpf",
+    "resonance": "lpq",
+    "rel": "release",
+    "rsize": "roomsize",
+    "sz": "roomsize",
+    "size": "roomsize",
+    "s": "sound",
+    "sus": "sustain",
+    "slowcat": "cat",
+    "fastcat": "seq",
+    "polyrhythm": "stack",
+    "pr": "stack",
+    "timeCat": "stepcat",
+    "timecat": "stepcat",
+    "voicings": "voicing",
+    "randcat": "chooseCycles",
+    "slowChunk": "chunk",
+    "slowchunk": "chunk",
+    "chunkback": "chunkBack",
+    "legato": "clip",
+    "echowith": "echoWith",
+    "stutWith": "echoWith",
+    "stutwith": "echoWith",
+    "density": "fast",
+    "fastchunk": "fastChunk",
+    "inv": "invert",
+    "juxby": "juxBy",
+    "somecycles": "someCycles",
+    "somecyclesBy": "someCyclesBy",
+    "wrandcat": "wchooseCycles"
+  },
+  "functions": [
+    {
+      "name": "bank",
+      "category": "sample",
+      "signature": "bank(name: string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sample",
+        "drum-machine",
+        "bank",
+        "prefix"
+      ],
+      "related": [
+        "s",
+        "n",
+        "samples"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sample/bank.md"
+    },
+    {
+      "name": "n",
+      "category": "sample",
+      "signature": "n(index: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sample",
+        "index",
+        "variant",
+        "select"
+      ],
+      "related": [
+        "s",
+        "bank",
+        "samples"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sample/n.md"
+    },
+    {
+      "name": "s",
+      "category": "sample",
+      "signature": "s(name: string | Pattern): Pattern",
+      "aliases": [
+        "sound"
+      ],
+      "tags": [
+        "sample",
+        "playback",
+        "drum",
+        "sound"
+      ],
+      "related": [
+        "n",
+        "bank",
+        "samples",
+        "soundAlias",
+        "speed",
+        "begin",
+        "end"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sample/s.md"
+    },
+    {
+      "name": "samples",
+      "category": "sample",
+      "signature": "samples(map: object | string, basePath?: string): void",
+      "aliases": [],
+      "tags": [
+        "sample",
+        "loader",
+        "custom",
+        "bank",
+        "setup"
+      ],
+      "related": [
+        "s",
+        "n",
+        "bank",
+        "soundAlias"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sample/samples.md"
+    },
+    {
+      "name": "soundAlias",
+      "category": "sample",
+      "signature": "soundAlias(originalName: string, alias: string): void",
+      "aliases": [],
+      "tags": [
+        "sample",
+        "alias",
+        "rename",
+        "shortcut"
+      ],
+      "related": [
+        "s",
+        "samples",
+        "bank"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sample/soundAlias.md"
+    },
+    {
+      "name": "brand",
+      "category": "signal",
+      "signature": "brand: Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "random",
+        "continuous",
+        "binary",
+        "lfo"
+      ],
+      "related": [
+        "brandBy",
+        "rand",
+        "square"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/brand.md"
+    },
+    {
+      "name": "brandBy",
+      "category": "signal",
+      "signature": "brandBy(probability: number): Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "random",
+        "continuous",
+        "binary",
+        "lfo"
+      ],
+      "related": [
+        "brand",
+        "rand"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/brandBy.md"
+    },
+    {
+      "name": "cosine",
+      "category": "signal",
+      "signature": "cosine: Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "continuous",
+        "oscillator",
+        "lfo",
+        "cosine"
+      ],
+      "related": [
+        "sine",
+        "saw",
+        "tri",
+        "square"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/cosine.md"
+    },
+    {
+      "name": "irand",
+      "category": "signal",
+      "signature": "irand(n: number): Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "random",
+        "continuous",
+        "integer",
+        "lfo"
+      ],
+      "related": [
+        "rand",
+        "perlin",
+        "brand"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/irand.md"
+    },
+    {
+      "name": "perlin",
+      "category": "signal",
+      "signature": "perlin: Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "random",
+        "continuous",
+        "noise",
+        "perlin",
+        "lfo"
+      ],
+      "related": [
+        "rand",
+        "irand",
+        "sine"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/perlin.md"
+    },
+    {
+      "name": "rand",
+      "category": "signal",
+      "signature": "rand: Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "random",
+        "continuous",
+        "noise",
+        "lfo"
+      ],
+      "related": [
+        "irand",
+        "perlin",
+        "brand",
+        "rand2"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/rand.md"
+    },
+    {
+      "name": "saw",
+      "category": "signal",
+      "signature": "saw: Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "continuous",
+        "oscillator",
+        "lfo",
+        "sawtooth"
+      ],
+      "related": [
+        "sine",
+        "isaw",
+        "tri",
+        "square"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/saw.md"
+    },
+    {
+      "name": "sine",
+      "category": "signal",
+      "signature": "sine: Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "continuous",
+        "oscillator",
+        "lfo",
+        "sine"
+      ],
+      "related": [
+        "cosine",
+        "saw",
+        "tri",
+        "square"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/sine.md"
+    },
+    {
+      "name": "square",
+      "category": "signal",
+      "signature": "square: Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "continuous",
+        "oscillator",
+        "lfo",
+        "square"
+      ],
+      "related": [
+        "sine",
+        "saw",
+        "tri",
+        "cosine"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/square.md"
+    },
+    {
+      "name": "tri",
+      "category": "signal",
+      "signature": "tri: Pattern",
+      "aliases": [],
+      "tags": [
+        "signal",
+        "continuous",
+        "oscillator",
+        "lfo",
+        "triangle"
+      ],
+      "related": [
+        "sine",
+        "saw",
+        "square",
+        "cosine"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/signals/",
+      "path": "functions/signal/tri.md"
+    },
+    {
+      "name": "adsr",
+      "category": "sound",
+      "signature": "adsr(\\\"attack:decay:sustain:release\\\" | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "envelope",
+        "adsr",
+        "amplitude"
+      ],
+      "related": [
+        "attack",
+        "decay",
+        "sustain",
+        "release"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/adsr.md"
+    },
+    {
+      "name": "attack",
+      "category": "sound",
+      "signature": "attack(time: number | Pattern): Pattern",
+      "aliases": [
+        "att"
+      ],
+      "tags": [
+        "sound",
+        "envelope",
+        "adsr",
+        "amplitude"
+      ],
+      "related": [
+        "decay",
+        "sustain",
+        "release",
+        "adsr"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/attack.md"
+    },
+    {
+      "name": "begin",
+      "category": "sound",
+      "signature": "begin(position: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "sample",
+        "playback",
+        "trim"
+      ],
+      "related": [
+        "end",
+        "loop",
+        "loopBegin",
+        "speed"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sound/begin.md"
+    },
+    {
+      "name": "bpf",
+      "category": "sound",
+      "signature": "bpf(frequency: number | Pattern): Pattern",
+      "aliases": [
+        "bandf",
+        "bp"
+      ],
+      "tags": [
+        "sound",
+        "filter",
+        "bandpass",
+        "eq"
+      ],
+      "related": [
+        "bpq",
+        "lpf",
+        "hpf"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/bpf.md"
+    },
+    {
+      "name": "bpq",
+      "category": "sound",
+      "signature": "bpq(q: number | Pattern): Pattern",
+      "aliases": [
+        "bandq"
+      ],
+      "tags": [
+        "sound",
+        "filter",
+        "bandpass",
+        "resonance"
+      ],
+      "related": [
+        "bpf",
+        "lpq",
+        "hpq"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/bpq.md"
+    },
+    {
+      "name": "coarse",
+      "category": "sound",
+      "signature": "coarse(factor: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "distortion",
+        "lofi",
+        "samplerate",
+        "waveshaping"
+      ],
+      "related": [
+        "crush",
+        "distort",
+        "shape"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/coarse.md"
+    },
+    {
+      "name": "crush",
+      "category": "sound",
+      "signature": "crush(depth: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "distortion",
+        "lofi",
+        "bitcrush",
+        "waveshaping"
+      ],
+      "related": [
+        "coarse",
+        "distort",
+        "shape"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/crush.md"
+    },
+    {
+      "name": "decay",
+      "category": "sound",
+      "signature": "decay(time: number | Pattern): Pattern",
+      "aliases": [
+        "dec"
+      ],
+      "tags": [
+        "sound",
+        "envelope",
+        "adsr",
+        "amplitude"
+      ],
+      "related": [
+        "attack",
+        "sustain",
+        "release",
+        "adsr"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/decay.md"
+    },
+    {
+      "name": "delay",
+      "category": "sound",
+      "signature": "delay(level: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "delay",
+        "echo",
+        "effect"
+      ],
+      "related": [
+        "delaytime",
+        "delayfeedback",
+        "room",
+        "orbit"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/delay.md"
+    },
+    {
+      "name": "delayfeedback",
+      "category": "sound",
+      "signature": "delayfeedback(feedback: number | Pattern): Pattern",
+      "aliases": [
+        "delayfb",
+        "dfb"
+      ],
+      "tags": [
+        "sound",
+        "delay",
+        "echo",
+        "effect",
+        "feedback"
+      ],
+      "related": [
+        "delay",
+        "delaytime"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/delayfeedback.md"
+    },
+    {
+      "name": "delaytime",
+      "category": "sound",
+      "signature": "delaytime(seconds: number | Pattern): Pattern",
+      "aliases": [
+        "delayt",
+        "dt"
+      ],
+      "tags": [
+        "sound",
+        "delay",
+        "echo",
+        "effect"
+      ],
+      "related": [
+        "delay",
+        "delayfeedback"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/delaytime.md"
+    },
+    {
+      "name": "distort",
+      "category": "sound",
+      "signature": "distort(amount: number | Pattern): Pattern",
+      "aliases": [
+        "dist"
+      ],
+      "tags": [
+        "sound",
+        "distortion",
+        "waveshaping",
+        "effect"
+      ],
+      "related": [
+        "shape",
+        "crush",
+        "coarse"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/distort.md"
+    },
+    {
+      "name": "end",
+      "category": "sound",
+      "signature": "end(position: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "sample",
+        "playback",
+        "trim"
+      ],
+      "related": [
+        "begin",
+        "loop",
+        "loopEnd",
+        "speed"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sound/end.md"
+    },
+    {
+      "name": "freq",
+      "category": "sound",
+      "signature": "freq(hertz: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "pitch",
+        "frequency",
+        "synth"
+      ],
+      "related": [
+        "note",
+        "n",
+        "sound"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/synths/",
+      "path": "functions/sound/freq.md"
+    },
+    {
+      "name": "gain",
+      "category": "sound",
+      "signature": "gain(amount: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "dynamics",
+        "volume",
+        "amplitude"
+      ],
+      "related": [
+        "velocity",
+        "postgain",
+        "compressor",
+        "pan"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/gain.md"
+    },
+    {
+      "name": "hpf",
+      "category": "sound",
+      "signature": "hpf(frequency: number | Pattern): Pattern",
+      "aliases": [
+        "hp",
+        "hcutoff"
+      ],
+      "tags": [
+        "sound",
+        "filter",
+        "highpass",
+        "eq"
+      ],
+      "related": [
+        "hpq",
+        "lpf",
+        "bpf"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/hpf.md"
+    },
+    {
+      "name": "hpq",
+      "category": "sound",
+      "signature": "hpq(q: number | Pattern): Pattern",
+      "aliases": [
+        "hresonance"
+      ],
+      "tags": [
+        "sound",
+        "filter",
+        "highpass",
+        "resonance"
+      ],
+      "related": [
+        "hpf",
+        "lpq",
+        "bpq"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/hpq.md"
+    },
+    {
+      "name": "loop",
+      "category": "sound",
+      "signature": "loop(enabled: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "sample",
+        "playback",
+        "loop"
+      ],
+      "related": [
+        "loopBegin",
+        "loopEnd",
+        "begin",
+        "end"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sound/loop.md"
+    },
+    {
+      "name": "loopBegin",
+      "category": "sound",
+      "signature": "loopBegin(position: number | Pattern): Pattern",
+      "aliases": [
+        "loopb"
+      ],
+      "tags": [
+        "sound",
+        "sample",
+        "playback",
+        "loop"
+      ],
+      "related": [
+        "loop",
+        "loopEnd",
+        "begin"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sound/loopbegin.md"
+    },
+    {
+      "name": "loopEnd",
+      "category": "sound",
+      "signature": "loopEnd(position: number | Pattern): Pattern",
+      "aliases": [
+        "loope"
+      ],
+      "tags": [
+        "sound",
+        "sample",
+        "playback",
+        "loop"
+      ],
+      "related": [
+        "loop",
+        "loopBegin",
+        "end"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sound/loopend.md"
+    },
+    {
+      "name": "lpf",
+      "category": "sound",
+      "signature": "lpf(frequency: number | Pattern): Pattern",
+      "aliases": [
+        "cutoff",
+        "ctf",
+        "lp"
+      ],
+      "tags": [
+        "sound",
+        "filter",
+        "lowpass",
+        "eq"
+      ],
+      "related": [
+        "lpq",
+        "hpf",
+        "bpf",
+        "lpenv",
+        "lpattack"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/lpf.md"
+    },
+    {
+      "name": "lpq",
+      "category": "sound",
+      "signature": "lpq(q: number | Pattern): Pattern",
+      "aliases": [
+        "resonance"
+      ],
+      "tags": [
+        "sound",
+        "filter",
+        "lowpass",
+        "resonance"
+      ],
+      "related": [
+        "lpf",
+        "hpq",
+        "bpq"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/lpq.md"
+    },
+    {
+      "name": "note",
+      "category": "sound",
+      "signature": "note(pitch: string | number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "pitch",
+        "tonal",
+        "synth"
+      ],
+      "related": [
+        "freq",
+        "n",
+        "sound",
+        "speed"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/synths/",
+      "path": "functions/sound/note.md"
+    },
+    {
+      "name": "pan",
+      "category": "sound",
+      "signature": "pan(position: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "stereo",
+        "panning",
+        "spatial"
+      ],
+      "related": [
+        "jux",
+        "juxBy",
+        "gain",
+        "orbit"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/pan.md"
+    },
+    {
+      "name": "release",
+      "category": "sound",
+      "signature": "release(time: number | Pattern): Pattern",
+      "aliases": [
+        "rel"
+      ],
+      "tags": [
+        "sound",
+        "envelope",
+        "adsr",
+        "amplitude"
+      ],
+      "related": [
+        "attack",
+        "decay",
+        "sustain",
+        "adsr"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/release.md"
+    },
+    {
+      "name": "room",
+      "category": "sound",
+      "signature": "room(level: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "reverb",
+        "effect",
+        "space"
+      ],
+      "related": [
+        "roomsize",
+        "roomlp",
+        "roomfade",
+        "roomdim",
+        "iresponse"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/room.md"
+    },
+    {
+      "name": "roomsize",
+      "category": "sound",
+      "signature": "roomsize(size: number | Pattern): Pattern",
+      "aliases": [
+        "rsize",
+        "sz",
+        "size"
+      ],
+      "tags": [
+        "sound",
+        "reverb",
+        "effect",
+        "space"
+      ],
+      "related": [
+        "room",
+        "roomlp",
+        "roomfade",
+        "roomdim"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/roomsize.md"
+    },
+    {
+      "name": "shape",
+      "category": "sound",
+      "signature": "shape(amount: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "distortion",
+        "waveshaping",
+        "effect"
+      ],
+      "related": [
+        "distort",
+        "crush",
+        "coarse"
+      ],
+      "status": "needs-verification",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/shape.md"
+    },
+    {
+      "name": "sound",
+      "category": "sound",
+      "signature": "sound(source: string | Pattern): Pattern",
+      "aliases": [
+        "s"
+      ],
+      "tags": [
+        "sound",
+        "synth",
+        "oscillator",
+        "sample",
+        "source"
+      ],
+      "related": [
+        "note",
+        "freq",
+        "n",
+        "vowel"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/synths/",
+      "path": "functions/sound/sound.md"
+    },
+    {
+      "name": "speed",
+      "category": "sound",
+      "signature": "speed(speed: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "sample",
+        "pitch",
+        "playback"
+      ],
+      "related": [
+        "begin",
+        "end",
+        "loop",
+        "note",
+        "n"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/samples/",
+      "path": "functions/sound/speed.md"
+    },
+    {
+      "name": "sustain",
+      "category": "sound",
+      "signature": "sustain(level: number | Pattern): Pattern",
+      "aliases": [
+        "sus"
+      ],
+      "tags": [
+        "sound",
+        "envelope",
+        "adsr",
+        "amplitude"
+      ],
+      "related": [
+        "attack",
+        "decay",
+        "release",
+        "adsr"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/sustain.md"
+    },
+    {
+      "name": "vowel",
+      "category": "sound",
+      "signature": "vowel(vowel: string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sound",
+        "filter",
+        "formant",
+        "vocal"
+      ],
+      "related": [
+        "lpf",
+        "bpf",
+        "note"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/sound/vowel.md"
+    },
+    {
+      "name": "arrange",
+      "category": "structure",
+      "signature": "arrange(...sections: [number, Pattern][]): Pattern",
+      "aliases": [],
+      "tags": [
+        "combination",
+        "arrangement",
+        "multi-cycle",
+        "structure"
+      ],
+      "related": [
+        "cat",
+        "seq",
+        "stack",
+        "stepcat"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/factories/",
+      "path": "functions/structure/arrange.md"
+    },
+    {
+      "name": "cat",
+      "category": "structure",
+      "signature": "cat(...items: Pattern[]): Pattern",
+      "aliases": [
+        "slowcat"
+      ],
+      "tags": [
+        "combination",
+        "concatenation",
+        "cycle",
+        "sequence"
+      ],
+      "related": [
+        "seq",
+        "fastcat",
+        "stack",
+        "stepcat",
+        "arrange",
+        "timeCat"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/factories/",
+      "path": "functions/structure/cat.md"
+    },
+    {
+      "name": "seq",
+      "category": "structure",
+      "signature": "seq(...items: Pattern[]): Pattern",
+      "aliases": [
+        "fastcat"
+      ],
+      "tags": [
+        "combination",
+        "concatenation",
+        "cycle",
+        "sequence",
+        "fast"
+      ],
+      "related": [
+        "cat",
+        "slowcat",
+        "stack",
+        "stepcat",
+        "timeCat"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/factories/",
+      "path": "functions/structure/seq.md"
+    },
+    {
+      "name": "stack",
+      "category": "structure",
+      "signature": "stack(...items: Pattern[]): Pattern",
+      "aliases": [
+        "polyrhythm",
+        "pr"
+      ],
+      "tags": [
+        "combination",
+        "layering",
+        "polyphony",
+        "simultaneous"
+      ],
+      "related": [
+        "cat",
+        "seq",
+        "fastcat",
+        "polymeter",
+        "arrange"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/factories/",
+      "path": "functions/structure/stack.md"
+    },
+    {
+      "name": "stepcat",
+      "category": "structure",
+      "signature": "stepcat(...items: ([number, Pattern] | Pattern)[]): Pattern",
+      "aliases": [
+        "timeCat",
+        "timecat"
+      ],
+      "tags": [
+        "combination",
+        "concatenation",
+        "stepwise",
+        "proportional"
+      ],
+      "related": [
+        "cat",
+        "seq",
+        "stack",
+        "pace",
+        "expand",
+        "stepalt",
+        "arrange"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/factories/",
+      "path": "functions/structure/stepcat.md"
+    },
+    {
+      "name": "anchor",
+      "category": "tonal",
+      "signature": "anchor(note: string | number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "voicing",
+        "anchor",
+        "register",
+        "harmony"
+      ],
+      "related": [
+        "voicing",
+        "mode",
+        "chord",
+        "dict"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/understand/voicings/",
+      "path": "functions/tonal/anchor.md"
+    },
+    {
+      "name": "chord",
+      "category": "tonal",
+      "signature": "chord(symbol: string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "chord",
+        "harmony",
+        "voicing"
+      ],
+      "related": [
+        "voicing",
+        "rootNotes",
+        "anchor",
+        "mode",
+        "n"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/tonal/",
+      "path": "functions/tonal/chord.md"
+    },
+    {
+      "name": "dict",
+      "category": "tonal",
+      "signature": "dict(name: string): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "voicing",
+        "dictionary",
+        "chord",
+        "harmony"
+      ],
+      "related": [
+        "voicing",
+        "chord",
+        "anchor",
+        "mode"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/understand/voicings/",
+      "path": "functions/tonal/dict.md"
+    },
+    {
+      "name": "mode",
+      "category": "tonal",
+      "signature": "mode(strategy: string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "voicing",
+        "mode",
+        "anchor",
+        "harmony"
+      ],
+      "related": [
+        "anchor",
+        "voicing",
+        "chord",
+        "dict",
+        "rootNotes"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/understand/voicings/",
+      "path": "functions/tonal/mode.md"
+    },
+    {
+      "name": "n",
+      "category": "tonal",
+      "signature": "n(index: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "n",
+        "scale",
+        "index",
+        "degree",
+        "sample"
+      ],
+      "related": [
+        "scale",
+        "chord",
+        "voicing",
+        "note"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/tonal/",
+      "path": "functions/tonal/n.md"
+    },
+    {
+      "name": "note",
+      "category": "tonal",
+      "signature": "note(name: string | number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "note",
+        "pitch",
+        "control"
+      ],
+      "related": [
+        "n",
+        "scale",
+        "transpose",
+        "voicing"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/tonal/",
+      "path": "functions/tonal/note.md"
+    },
+    {
+      "name": "rootNotes",
+      "category": "tonal",
+      "signature": "rootNotes(octave: number = 2): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "chord",
+        "root",
+        "bass",
+        "harmony"
+      ],
+      "related": [
+        "chord",
+        "voicing",
+        "note",
+        "anchor"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/tonal/",
+      "path": "functions/tonal/rootNotes.md"
+    },
+    {
+      "name": "scale",
+      "category": "tonal",
+      "signature": "scale(name: string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "scale",
+        "notes",
+        "n",
+        "pitch"
+      ],
+      "related": [
+        "n",
+        "scaleTranspose",
+        "transpose",
+        "toScale"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/tonal/",
+      "path": "functions/tonal/scale.md"
+    },
+    {
+      "name": "scaleTranspose",
+      "category": "tonal",
+      "signature": "scaleTranspose(steps: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "scale",
+        "transpose",
+        "diatonic",
+        "steps"
+      ],
+      "related": [
+        "scale",
+        "transpose",
+        "n"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/tonal/",
+      "path": "functions/tonal/scaleTranspose.md"
+    },
+    {
+      "name": "transpose",
+      "category": "tonal",
+      "signature": "transpose(semitones: number | string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "tonal",
+        "pitch",
+        "semitones",
+        "interval",
+        "transpose"
+      ],
+      "related": [
+        "scale",
+        "scaleTranspose",
+        "note"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/tonal/",
+      "path": "functions/tonal/transpose.md"
+    },
+    {
+      "name": "voicing",
+      "category": "tonal",
+      "signature": "voicing(): Pattern",
+      "aliases": [
+        "voicings"
+      ],
+      "tags": [
+        "tonal",
+        "voicing",
+        "chord",
+        "harmony",
+        "voice-leading"
+      ],
+      "related": [
+        "chord",
+        "dict",
+        "anchor",
+        "mode",
+        "rootNotes",
+        "n"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/understand/voicings/",
+      "path": "functions/tonal/voicing.md"
+    },
+    {
+      "name": "almostAlways",
+      "category": "transform",
+      "signature": "almostAlways(f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "transform"
+      ],
+      "related": [
+        "sometimesBy",
+        "often",
+        "always",
+        "almostNever"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/almostAlways.md"
+    },
+    {
+      "name": "almostNever",
+      "category": "transform",
+      "signature": "almostNever(f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "transform"
+      ],
+      "related": [
+        "sometimesBy",
+        "rarely",
+        "never",
+        "almostAlways"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/almostNever.md"
+    },
+    {
+      "name": "always",
+      "category": "transform",
+      "signature": "always(f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "transform"
+      ],
+      "related": [
+        "sometimesBy",
+        "almostAlways",
+        "never"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/always.md"
+    },
+    {
+      "name": "choose",
+      "category": "transform",
+      "signature": "choose(...xs: any[]): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "selection",
+        "continuous",
+        "transform"
+      ],
+      "related": [
+        "wchoose",
+        "chooseCycles",
+        "wchooseCycles",
+        "rand"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/choose.md"
+    },
+    {
+      "name": "chooseCycles",
+      "category": "transform",
+      "signature": "chooseCycles(...xs: any[]): Pattern",
+      "aliases": [
+        "randcat"
+      ],
+      "tags": [
+        "random",
+        "selection",
+        "cycle",
+        "transform"
+      ],
+      "related": [
+        "choose",
+        "wchooseCycles",
+        "wchoose"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/chooseCycles.md"
+    },
+    {
+      "name": "chunk",
+      "category": "transform",
+      "signature": "chunk(n: number, func: function): Pattern",
+      "aliases": [
+        "slowChunk",
+        "slowchunk"
+      ],
+      "tags": [
+        "conditional",
+        "cycle",
+        "parts",
+        "transform"
+      ],
+      "related": [
+        "chunkBack",
+        "fastChunk",
+        "every"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/chunk.md"
+    },
+    {
+      "name": "chunkBack",
+      "category": "transform",
+      "signature": "chunkBack(n: number, func: function): Pattern",
+      "aliases": [
+        "chunkback"
+      ],
+      "tags": [
+        "conditional",
+        "cycle",
+        "parts",
+        "transform"
+      ],
+      "related": [
+        "chunk",
+        "fastChunk"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/chunkBack.md"
+    },
+    {
+      "name": "clip",
+      "category": "transform",
+      "signature": "clip(factor: number | Pattern): Pattern",
+      "aliases": [
+        "legato"
+      ],
+      "tags": [
+        "time",
+        "duration",
+        "legato",
+        "gate",
+        "sustain"
+      ],
+      "related": [
+        "euclidLegato",
+        "ply",
+        "segment"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/clip.md"
+    },
+    {
+      "name": "degrade",
+      "category": "transform",
+      "signature": "degrade(): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "thinning",
+        "transform"
+      ],
+      "related": [
+        "degradeBy",
+        "undegrade",
+        "undegradeBy"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/degrade.md"
+    },
+    {
+      "name": "degradeBy",
+      "category": "transform",
+      "signature": "degradeBy(amount: number): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "thinning",
+        "transform"
+      ],
+      "related": [
+        "degrade",
+        "undegradeBy",
+        "undegrade",
+        "sometimesBy"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/degradeBy.md"
+    },
+    {
+      "name": "early",
+      "category": "transform",
+      "signature": "early(cycles: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "time",
+        "shift",
+        "nudge",
+        "offset"
+      ],
+      "related": [
+        "late",
+        "compress",
+        "zoom"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/early.md"
+    },
+    {
+      "name": "echo",
+      "category": "transform",
+      "signature": "echo(times: number, time: number, feedback: number): Pattern",
+      "aliases": [],
+      "tags": [
+        "accumulation",
+        "echo",
+        "feedback",
+        "delay",
+        "transform"
+      ],
+      "related": [
+        "echoWith",
+        "stut",
+        "off"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/accumulation/",
+      "path": "functions/transform/echo.md"
+    },
+    {
+      "name": "echoWith",
+      "category": "transform",
+      "signature": "echoWith(times: number, time: number, func: (p: Pattern, n: number) => Pattern): Pattern",
+      "aliases": [
+        "echowith",
+        "stutWith",
+        "stutwith"
+      ],
+      "tags": [
+        "accumulation",
+        "echo",
+        "feedback",
+        "delay",
+        "echoWith",
+        "transform"
+      ],
+      "related": [
+        "echo",
+        "off",
+        "stut"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/accumulation/",
+      "path": "functions/transform/echoWith.md"
+    },
+    {
+      "name": "euclid",
+      "category": "transform",
+      "signature": "euclid(pulses: number, steps: number): Pattern",
+      "aliases": [],
+      "tags": [
+        "rhythm",
+        "euclidean",
+        "structure"
+      ],
+      "related": [
+        "euclidRot",
+        "euclidLegato",
+        "ply"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/euclid.md"
+    },
+    {
+      "name": "euclidLegato",
+      "category": "transform",
+      "signature": "euclidLegato(pulses: number, steps: number, rotation?, pat?): Pattern",
+      "aliases": [],
+      "tags": [
+        "rhythm",
+        "euclidean",
+        "structure",
+        "legato",
+        "sustain"
+      ],
+      "related": [
+        "euclid",
+        "euclidRot",
+        "clip"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/euclidLegato.md"
+    },
+    {
+      "name": "euclidRot",
+      "category": "transform",
+      "signature": "euclidRot(pulses: number, steps: number, rotation: number): Pattern",
+      "aliases": [],
+      "tags": [
+        "rhythm",
+        "euclidean",
+        "structure",
+        "rotation"
+      ],
+      "related": [
+        "euclid",
+        "euclidLegato"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/euclidRot.md"
+    },
+    {
+      "name": "every",
+      "category": "transform",
+      "signature": "every(n: number, f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "conditional",
+        "cycle",
+        "periodic",
+        "transform"
+      ],
+      "related": [
+        "firstOf",
+        "lastOf",
+        "when",
+        "whenmod"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/every.md"
+    },
+    {
+      "name": "fast",
+      "category": "transform",
+      "signature": "fast(factor: number | Pattern): Pattern",
+      "aliases": [
+        "density"
+      ],
+      "tags": [
+        "time",
+        "speed",
+        "tempo"
+      ],
+      "related": [
+        "slow",
+        "ply",
+        "hurry"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/fast.md"
+    },
+    {
+      "name": "fastChunk",
+      "category": "transform",
+      "signature": "fastChunk(n: number, func: function): Pattern",
+      "aliases": [
+        "fastchunk"
+      ],
+      "tags": [
+        "conditional",
+        "cycle",
+        "parts",
+        "transform"
+      ],
+      "related": [
+        "chunk",
+        "chunkBack"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/fastChunk.md"
+    },
+    {
+      "name": "firstOf",
+      "category": "transform",
+      "signature": "firstOf(n: number, func: function): Pattern",
+      "aliases": [],
+      "tags": [
+        "conditional",
+        "cycle",
+        "periodic",
+        "transform"
+      ],
+      "related": [
+        "lastOf",
+        "every",
+        "when"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/firstOf.md"
+    },
+    {
+      "name": "hush",
+      "category": "transform",
+      "signature": "hush(): Pattern",
+      "aliases": [],
+      "tags": [
+        "silence",
+        "mute",
+        "utility"
+      ],
+      "related": [
+        "mask",
+        "never",
+        "degrade"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/hush.md"
+    },
+    {
+      "name": "invert",
+      "category": "transform",
+      "signature": "invert(): Pattern",
+      "aliases": [
+        "inv"
+      ],
+      "tags": [
+        "binary",
+        "struct",
+        "rhythm",
+        "flip"
+      ],
+      "related": [
+        "struct",
+        "mask",
+        "euclid"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/invert.md"
+    },
+    {
+      "name": "jux",
+      "category": "transform",
+      "signature": "jux(f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "stereo",
+        "panning",
+        "conditional",
+        "transform"
+      ],
+      "related": [
+        "juxBy",
+        "superimpose",
+        "layer"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/transform/jux.md"
+    },
+    {
+      "name": "juxBy",
+      "category": "transform",
+      "signature": "juxBy(width: number, f: Pattern => Pattern): Pattern",
+      "aliases": [
+        "juxby"
+      ],
+      "tags": [
+        "stereo",
+        "panning",
+        "conditional",
+        "transform"
+      ],
+      "related": [
+        "jux",
+        "superimpose",
+        "layer"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/effects/",
+      "path": "functions/transform/juxBy.md"
+    },
+    {
+      "name": "lastOf",
+      "category": "transform",
+      "signature": "lastOf(n: number, func: function): Pattern",
+      "aliases": [],
+      "tags": [
+        "conditional",
+        "cycle",
+        "periodic",
+        "transform"
+      ],
+      "related": [
+        "firstOf",
+        "every",
+        "when"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/lastOf.md"
+    },
+    {
+      "name": "late",
+      "category": "transform",
+      "signature": "late(cycles: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "time",
+        "shift",
+        "nudge",
+        "offset"
+      ],
+      "related": [
+        "early",
+        "compress",
+        "zoom"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/late.md"
+    },
+    {
+      "name": "layer",
+      "category": "transform",
+      "signature": "layer(...funcs: ((p: Pattern) => Pattern)[]): Pattern",
+      "aliases": [],
+      "tags": [
+        "accumulation",
+        "layering",
+        "layer",
+        "transform"
+      ],
+      "related": [
+        "superimpose",
+        "off"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/accumulation/",
+      "path": "functions/transform/layer.md"
+    },
+    {
+      "name": "mask",
+      "category": "transform",
+      "signature": "mask(pattern: string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "gate",
+        "mute",
+        "silence",
+        "binary",
+        "conditional"
+      ],
+      "related": [
+        "struct",
+        "when",
+        "hush",
+        "reset"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/mask.md"
+    },
+    {
+      "name": "never",
+      "category": "transform",
+      "signature": "never(f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "transform"
+      ],
+      "related": [
+        "sometimesBy",
+        "almostNever",
+        "always"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/never.md"
+    },
+    {
+      "name": "off",
+      "category": "transform",
+      "signature": "off(time: number | Pattern, func: (p: Pattern) => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "accumulation",
+        "layering",
+        "delay",
+        "off",
+        "transform"
+      ],
+      "related": [
+        "superimpose",
+        "echoWith",
+        "echo"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/accumulation/",
+      "path": "functions/transform/off.md"
+    },
+    {
+      "name": "often",
+      "category": "transform",
+      "signature": "often(f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "transform"
+      ],
+      "related": [
+        "sometimesBy",
+        "sometimes",
+        "rarely",
+        "almostAlways"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/often.md"
+    },
+    {
+      "name": "ply",
+      "category": "transform",
+      "signature": "ply(n: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "repeat",
+        "subdivision",
+        "structure"
+      ],
+      "related": [
+        "fast",
+        "segment",
+        "euclid"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/ply.md"
+    },
+    {
+      "name": "rarely",
+      "category": "transform",
+      "signature": "rarely(f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "transform"
+      ],
+      "related": [
+        "sometimesBy",
+        "sometimes",
+        "often",
+        "almostNever"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/rarely.md"
+    },
+    {
+      "name": "reset",
+      "category": "transform",
+      "signature": "reset(pattern: string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sync",
+        "restart",
+        "cycle",
+        "conditional"
+      ],
+      "related": [
+        "restart",
+        "mask",
+        "struct",
+        "when"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/reset.md"
+    },
+    {
+      "name": "restart",
+      "category": "transform",
+      "signature": "restart(pattern: string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "sync",
+        "restart",
+        "cycle",
+        "conditional"
+      ],
+      "related": [
+        "reset",
+        "mask",
+        "struct",
+        "when"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/restart.md"
+    },
+    {
+      "name": "rev",
+      "category": "transform",
+      "signature": "rev(): Pattern",
+      "aliases": [],
+      "tags": [
+        "time",
+        "reverse",
+        "order"
+      ],
+      "related": [
+        "palindrome",
+        "iter",
+        "jux"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/rev.md"
+    },
+    {
+      "name": "slow",
+      "category": "transform",
+      "signature": "slow(factor: number | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "time",
+        "tempo",
+        "slow",
+        "stretch",
+        "cycles"
+      ],
+      "related": [
+        "fast",
+        "hurry",
+        "cpm"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/time-modifiers/",
+      "path": "functions/transform/slow.md"
+    },
+    {
+      "name": "someCycles",
+      "category": "transform",
+      "signature": "someCycles(f: Pattern => Pattern): Pattern",
+      "aliases": [
+        "somecycles"
+      ],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "cycle",
+        "transform"
+      ],
+      "related": [
+        "someCyclesBy",
+        "sometimes",
+        "every"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/someCycles.md"
+    },
+    {
+      "name": "someCyclesBy",
+      "category": "transform",
+      "signature": "someCyclesBy(probability: number, f: Pattern => Pattern): Pattern",
+      "aliases": [
+        "somecyclesBy"
+      ],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "cycle",
+        "transform"
+      ],
+      "related": [
+        "someCycles",
+        "sometimesBy",
+        "every"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/someCyclesBy.md"
+    },
+    {
+      "name": "sometimes",
+      "category": "transform",
+      "signature": "sometimes(f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "transform"
+      ],
+      "related": [
+        "sometimesBy",
+        "often",
+        "rarely",
+        "someCycles"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/sometimes.md"
+    },
+    {
+      "name": "sometimesBy",
+      "category": "transform",
+      "signature": "sometimesBy(probability: number, f: Pattern => Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "transform"
+      ],
+      "related": [
+        "sometimes",
+        "often",
+        "rarely",
+        "someCyclesBy"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/sometimesBy.md"
+    },
+    {
+      "name": "struct",
+      "category": "transform",
+      "signature": "struct(pattern: string | Pattern): Pattern",
+      "aliases": [],
+      "tags": [
+        "structure",
+        "rhythm",
+        "gate",
+        "binary"
+      ],
+      "related": [
+        "mask",
+        "euclid",
+        "reset",
+        "when"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/struct.md"
+    },
+    {
+      "name": "superimpose",
+      "category": "transform",
+      "signature": "superimpose(...funcs: ((p: Pattern) => Pattern)[]): Pattern",
+      "aliases": [],
+      "tags": [
+        "accumulation",
+        "layering",
+        "superimpose",
+        "transform"
+      ],
+      "related": [
+        "layer",
+        "off",
+        "echoWith"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/accumulation/",
+      "path": "functions/transform/superimpose.md"
+    },
+    {
+      "name": "undegrade",
+      "category": "transform",
+      "signature": "undegrade(): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "thinning",
+        "transform"
+      ],
+      "related": [
+        "degrade",
+        "undegradeBy",
+        "degradeBy"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/undegrade.md"
+    },
+    {
+      "name": "undegradeBy",
+      "category": "transform",
+      "signature": "undegradeBy(amount: number): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "conditional",
+        "probability",
+        "thinning",
+        "transform"
+      ],
+      "related": [
+        "degradeBy",
+        "undegrade",
+        "degrade"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/undegradeBy.md"
+    },
+    {
+      "name": "wchoose",
+      "category": "transform",
+      "signature": "wchoose(...pairs: [any, number][]): Pattern",
+      "aliases": [],
+      "tags": [
+        "random",
+        "selection",
+        "weighted",
+        "continuous",
+        "transform"
+      ],
+      "related": [
+        "choose",
+        "wchooseCycles",
+        "chooseCycles"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/wchoose.md"
+    },
+    {
+      "name": "wchooseCycles",
+      "category": "transform",
+      "signature": "wchooseCycles(...pairs: [any, number][]): Pattern",
+      "aliases": [
+        "wrandcat"
+      ],
+      "tags": [
+        "random",
+        "selection",
+        "weighted",
+        "cycle",
+        "transform"
+      ],
+      "related": [
+        "chooseCycles",
+        "wchoose",
+        "choose"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/random-modifiers/",
+      "path": "functions/transform/wchooseCycles.md"
+    },
+    {
+      "name": "when",
+      "category": "transform",
+      "signature": "when(binary_pat: Pattern, func: function): Pattern",
+      "aliases": [],
+      "tags": [
+        "conditional",
+        "binary",
+        "mask",
+        "transform"
+      ],
+      "related": [
+        "mask",
+        "struct",
+        "firstOf",
+        "lastOf"
+      ],
+      "status": "verified",
+      "source": "https://strudel.cc/learn/conditional-modifiers/",
+      "path": "functions/transform/when.md"
+    }
+  ]
+}
